@@ -1,0 +1,53 @@
+#dice-container{
+    display: flex;
+    position:fixed;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 3%;
+    z-index: 1;
+    width: 13%;
+    padding:10px;
+}
+#dice {
+    width: 220px;
+    background-color: white;
+    border-radius: 50%;
+    border: dashed 5px black;
+}
+#reset-dice {
+    width:fit-content;
+}
+#roll-output {
+    resize: none;
+    width: 50%;
+    align-self: center;
+    text-align: center;
+    font-size: larger;
+}
+#roll-output::-webkit-scrollbar {
+    display: none;
+}
+.shaker {
+    animation: shake 1.0s;
+}
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-180deg); }
+    20% { transform: rotate(180deg); }
+    30% { transform: rotate(-180deg); }
+    40% { transform: rotate(180deg); }
+    50% { transform: rotate(-180deg); }
+    60% { transform: rotate(180deg); }
+    70% { transform: rotate(-180deg); }
+    80% { transform: rotate(180deg); }
+    90% { transform: rotate(-180deg); }
+    100% { transform: rotate(180deg); }
+  }
+.green {
+    background-image: radial-gradient(rgb(49, 228, 94) 0%, rgb(23, 119, 47) 100%) !important;
+  }
+.red {
+    background-image: radial-gradient(rgb(255, 40, 40) 0%, rgb(180, 28, 28) 100%) !important;
+  }
+  

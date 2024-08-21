@@ -1,0 +1,148 @@
+:root {
+    --normal: rgb(219, 212, 212);
+    --fighting: rgb(201, 88, 53);
+    --flying: rgb(125, 140, 204);
+    --poison: rgb(78, 6, 78);
+    --ground: rgb(65, 37, 12);
+    --rock: rgb(212, 172, 126);
+    --bug: rgb(67, 114, 67);
+    --ghost: rgb(41, 4, 41);
+    --steel: rgb(82, 120, 146);
+    --fire: rgb(165, 21, 21);
+    --water: rgb(48, 48, 211);
+    --grass: rgb(16, 131, 16);
+    --electric: rgb(228, 228, 21);
+    --psychic: rgb(190, 50, 104);
+    --ice: rgb(133, 206, 248);
+    --dragon: rgb(35, 35, 136);
+    --dark: rgb(24, 23, 23);
+    --fairy: rgb(223, 103, 213);
+    --stellar: rgb(80, 141, 133);
+    --unknown: rgb(80, 141, 126);
+  }
+  #search-input{
+    text-align: center;
+  }
+  #pokedex {
+    background-color: darkred;
+    display:flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 30px auto auto auto;
+    padding: 10px;
+    align-items: center;
+    border: rgb(90, 16, 16) 2px solid;
+    border-radius: 25px;
+  }
+  #search-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #readout {
+    background-color: grey;
+    width: 75%;
+    border: solid lightgrey;
+    border-radius: 25px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+  }
+  #sprite{
+    background-color: black;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    align-self: center;
+    padding: 0;
+    margin: 5px auto 5px auto;
+    border: solid 2px rgb(255, 255, 255);
+  }
+  .type{
+    width: 75px;
+    height:40px;
+    border-radius: 5px;
+    color: white;
+    padding: 0.75px;
+    border: solid white 1px;
+    text-shadow: #000 1px 1px 1px;
+  }
+  .item{
+    margin: 1.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(53, 53, 52);
+    color: white;
+    padding: 2px;
+    border-radius: 5px;
+    border: solid rgb(19, 19, 19) 1px;
+  }
+  .attributes{
+    width: 150px;
+    height: 20px;
+    border-radius:5px;
+    margin:2px 5px 2px 0px;
+    color: rgb(189, 186, 186);
+  }
+  .normal{
+    background-color: var(--normal);
+  }
+  .fighting{
+    background-color: var(--fighting);
+  }
+  .flying{
+    background-color: var(--flying);
+  }
+  .poison{
+    background-color: var(--poison);
+  }
+  .ground{
+    background-color: var(--ground);
+  }
+  .rock{
+    background-color: var(--rock);
+  }
+  .bug{
+    background-color: var(--bug);
+  }
+  .ghost{
+    background-color: var(--ghost);
+  }
+  .steel{
+    background-color: var(--steel);
+  }
+  .fire{
+    background-color: var(--fire);
+  }
+  .water{
+    background-color: var(--water);
+  }
+  .grass{
+    background-color: var(--grass);
+  }
+  .electric{
+    background-color: var(--electric);
+  }
+  .psychic{
+    background-color: var(--psychic);
+  }
+  .ice{
+    background-color: var(--ice);
+  }
+  .dragon{
+    background-color: var(--dragon);
+  }
+  .dark{
+    background-color: var(--dark);
+  }
+  .fairy{
+    background-color: var(--fairy);
+  }
+  .stellar{
+    background-color: var(--stellar);
+  }
+  .unknown{
+    background-color: var(--unknown);
+  }
