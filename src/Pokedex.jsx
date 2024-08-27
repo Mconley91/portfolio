@@ -3,7 +3,6 @@ import './styles/Pokedex.css'
 
 
 export default function Pokedex(){
-    
     const searchButtonElement = document.getElementById("search-button");
     const [nameElement, setNameElement] = useState("");
     const [idElement,setIdElement] = useState("");
@@ -17,45 +16,24 @@ export default function Pokedex(){
     const [specialDefenseElement,setSpecialDefenseElement] = useState("");
     const [speedElement,setSpeedElement] = useState("");
     const [picture,setPicture] = useState("");
-    let type1Element = document.getElementById('type1');
-    let type2Element= document.getElementById('type2');
-    //let type1;
-    //let type2;
-
-    //event listeners are reading null and not working, changed to JSX element onClick property
-    /*inputElement.addEventListener("keypress", (event)=>{
-    if(event.key === "Enter"){
-        search()
-    };
-    });
-    searchButtonElement.addEventListener("click", ()=> search()); */
+    const [data1,setData1] = useState("");
+    const [data2,setData2] = useState("");
+    const [type1,setType1] = useState("");
+    const [type2,setType2] = useState("");
 
 async function search() {
     const inputElement = document.getElementById("search-input")
     const response = await fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon");
-    const data = await response.json();
+    setData1(await response.json());
     //added reverse name detection per cynthia's request
-    const foundPokemon = data.results.find((i)=>i.name === inputElement.value.toLowerCase() || i.id === Number(inputElement.value) || i.name === inputElement.value.split('').reverse().join('').toLowerCase());
+    const foundPokemon = data1.results.find((i)=>i.name === inputElement.value.toLowerCase() || i.id === Number(inputElement.value) || i.name === inputElement.value.split('').reverse().join('').toLowerCase());
     if (foundPokemon){
         setNameElement(foundPokemon.name.charAt(0).toUpperCase() + foundPokemon.name.slice(1));
         setIdElement(foundPokemon.id);
         const response2 = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${foundPokemon.name}`);
-        const data2 = await response2.json();
+        setData2(await response2.json());
         setWeightElement(data2.weight); 
         setHeightElement(data2.height);
-        //type logic block
-        const type1 = data2.types[0].type.name.toUpperCase(); 
-        type1Element.innerText = type1;
-        typeColors(type1);
-        if(data2.types[1]){ 
-        const type2 = data2.types[1].type.name.toUpperCase();
-        type2Element.innerText = type2
-        typeColors(type2);
-        }
-        else{
-            type2Element.innerText = ""
-            type2Element.className= "";
-        };
         setHpElement(data2.stats[0].base_stat);
         setAttackElement(data2.stats[1].base_stat);
         setDefenseElement(data2.stats[2].base_stat);
@@ -63,22 +41,26 @@ async function search() {
         setSpecialDefenseElement(data2.stats[4].base_stat);
         setSpeedElement(data2.stats[5].base_stat);
         setPicture(data2.sprites.front_default);
-    }
-    else {
-        alert("Pokémon not found")
-    };
-};
- //working here: HTML elements are rendering after JSX resulting in null values
-    function typeColors(type) {
-        let currentElement;
-        if(type === type1Element.innerText){
-            currentElement = type1Element;
-            classAssigner(currentElement);
+        //type logic block
+        setType1(data2.types[0].type.name.toUpperCase()); 
+        //type1Element.innerText = type1;
+        typeColors(type1);
+        if(data2.types[1]){ 
+        setType2(data2.types[1].type.name.toUpperCase());
+        //type2Element.innerText = type2
+        typeColors(type2);
         }
-        else if(type === type2Element.innerText){ 
-            currentElement = type2Element;
-            classAssigner(currentElement);
+        else{
+            document.getElementById('type2').innerText = "";
+            document.getElementById('type2').className= "";
         };
+    function typeColors(type) {
+        if(type === document.getElementById('type1').innerText){;
+            classAssigner(document.getElementById('type1'));
+        }
+        else if(type === document.getElementById('type2').innerText){ 
+            classAssigner(document.getElementById('type2'));
+        }; 
         function classAssigner(currentElement){
             currentElement.className= "";
             currentElement.classList.add("type");
@@ -146,6 +128,12 @@ async function search() {
             }
         };
     };
+
+    }
+    else {
+        alert("Pokémon not found")
+    };
+};
     return(
     <main id="pokedex">
       <div id="search-container">
@@ -159,10 +147,10 @@ async function search() {
         <div className="item"><span>Weight: </span><span className="attributes" id="weight">{weightElement}</span></div>
         <div className="item"><span>Height: </span><span className="attributes" id="height">{heightElement}</span></div>
         <div className="item"><span>Types: </span>
-          <span className="attributes" id="types">
-            <span id="type1"></span>
-            <span id="type2"></span>
-          </span>
+        <span className="attributes" id="types">
+            <span id="type1">{type1}</span>
+            <span id="type2">{type2}</span> 
+        </span>
         </div>
         <div className="item"><span>HP: </span><span className="attributes" id="hp">{hpElement}</span></div>
         <div className="item"><span>Attack: </span><span className="attributes" id="attack">{attackElement}</span></div>
