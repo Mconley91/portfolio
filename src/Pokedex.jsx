@@ -46,10 +46,7 @@ async function search() {
 };
     return(
     <main id="pokedex">
-      <div id="search-container">
-        <input id="search-input" placeholder="insert PKMN name or ID" required></input>
-        <button id="search-button" onClick={search}>Search</button>
-      </div>
+      <SearchBar search={search}/>
       <div id="readout">
         <img src={picture} id="sprite"/>
         <div className="item"><span>Name:</span> <span className="attributes" id="pokemon-name">{nameElement}</span></div>
@@ -93,8 +90,10 @@ function typeColors(type) {
         classAssigner(document.getElementById('type2'));
     }; 
     function classAssigner(currentElement){
+        //error is here: currentElement reads null when switching from monotype pokemon to dual type pokemon
         currentElement.className= "";
         currentElement.classList.add("type");
+        // ----------------------------------------------------------------------------------------------------
         switch (currentElement.innerText){
         case "NORMAL":
             currentElement.classList.add("normal");
@@ -175,3 +174,21 @@ function typeColors(type) {
         )
     };
 };
+
+function SearchBar({search}){ 
+    function keyListener(){
+        const inputElement = document.getElementById("search-input");
+        inputElement.addEventListener("keypress", (event)=>{ 
+            if(event.key === "Enter"){
+                search();
+            }; 
+        }); 
+    };
+    //fixed element having null value by calling the event listener with onChange.
+    return(
+        <div id="search-container">
+            <input id="search-input" placeholder="insert PKMN name or ID" onChange={()=>{keyListener()}} required></input>
+            <button id="search-button" onClick={search}>Search</button>
+        </div>
+    )
+}
