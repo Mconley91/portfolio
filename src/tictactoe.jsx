@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import './styles/Tictactoe.css'
 
 export default function Game(){
     const [history, setHistory] = useState([Array(9).fill(null)]);

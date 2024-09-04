@@ -1,5 +1,6 @@
-export default function RandomNameGenerator(){
+import './styles/RNG.css'
 
+export default function RandomNameGenerator(){
     const maleHumanName = [
         "Leonard ",
         "Joseph ",

@@ -1,0 +1,17 @@
+#random-name-output {
+    resize: none;
+    width: 400px;
+    text-align: center;
+    border: 0px;
+    font-size: larger;
+    margin-bottom: 10px;
+    height: 100px;
+    padding: 2px;
+    }
+    #random-name-output::-webkit-scrollbar {
+    display: none;
+    }
+    #rno-ui {
+    margin:0px;
+    padding: 0px;
+    }
