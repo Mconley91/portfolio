@@ -86,77 +86,77 @@ function typeColors(type) {
     if(type === document.getElementById('type1').innerText){;
         classAssigner(document.getElementById('type1'));
     }
-    else { //throws uncaught in promise error, still works....
+    else {
         classAssigner(document.getElementById('type2'));
     }; 
     function classAssigner(currentElement){
-        //error is here: currentElement reads null when switching from monotype pokemon to dual type pokemon
-        currentElement.className= "";
-        currentElement.classList.add("type");
-        // ----------------------------------------------------------------------------------------------------
-        switch (currentElement.innerText){
-        case "NORMAL":
-            currentElement.classList.add("normal");
-        break;
-        case "FIGHTING":
-            currentElement.classList.add("fighting");
-        break;
-        case "FLYING":
-            currentElement.classList.add("flying");
-        break;
-        case "POISON":
-            currentElement.classList.add("poison");
-        break;
-        case "GROUND":
-            currentElement.classList.add("ground");
-        break;
-        case "ROCK":
-            currentElement.classList.add("rock");
-        break;
-        case "BUG":
-            currentElement.classList.add("bug");
-        break;
-        case "GHOST":
-            currentElement.classList.add("ghost");
-        break;
-        case "STEEL":
-            currentElement.classList.add("steel");
-        break;
-        case "FIRE":
-            currentElement.classList.add("fire");
-        break;
-        case "WATER":
-            currentElement.classList.add("water");
-        break;
-        case "GRASS":
-            currentElement.classList.add("grass");
-        break;
-        case "ELECTRIC":
-            currentElement.classList.add("electric");
-        break;
-        case "PSYCHIC":
-            currentElement.classList.add("psychic");
-        break;
-        case "ICE":
-            currentElement.classList.add("ice");
-        break;
-        case "DRAGON":
-            currentElement.classList.add("dragon");
-        break;
-        case "DARK":
-            currentElement.classList.add("dark");
-        break;
-        case "FAIRY":
-            currentElement.classList.add("fairy");
-        break;
-        case "STELLAR":
-            currentElement.classList.add("stellar");
-        break;
-        case "???":
-            currentElement.classList.add("unknown");
-        break;
-        }
-    };
+        if(currentElement){
+            currentElement.className= "";
+            currentElement.classList.add("type");
+            switch (currentElement.innerText){
+                case "NORMAL":
+                    currentElement.classList.add("normal");
+                break;
+                case "FIGHTING":
+                    currentElement.classList.add("fighting");
+                break;
+                case "FLYING":
+                    currentElement.classList.add("flying");
+                break;
+                case "POISON":
+                    currentElement.classList.add("poison");
+                break;
+                case "GROUND":
+                    currentElement.classList.add("ground");
+                break;
+                case "ROCK":
+                    currentElement.classList.add("rock");
+                break;
+                case "BUG":
+                    currentElement.classList.add("bug");
+                break;
+                case "GHOST":
+                    currentElement.classList.add("ghost");
+                break;
+                case "STEEL":
+                    currentElement.classList.add("steel");
+                break;
+                case "FIRE":
+                    currentElement.classList.add("fire");
+                break;
+                case "WATER":
+                    currentElement.classList.add("water");
+                break;
+                case "GRASS":
+                    currentElement.classList.add("grass");
+                break;
+                case "ELECTRIC":
+                    currentElement.classList.add("electric");
+                break;
+                case "PSYCHIC":
+                    currentElement.classList.add("psychic");
+                break;
+                case "ICE":
+                    currentElement.classList.add("ice");
+                break;
+                case "DRAGON":
+                    currentElement.classList.add("dragon");
+                break;
+                case "DARK":
+                    currentElement.classList.add("dark");
+                break;
+                case "FAIRY":
+                    currentElement.classList.add("fairy");
+                break;
+                case "STELLAR":
+                    currentElement.classList.add("stellar");
+                break;
+                case "???":
+                    currentElement.classList.add("unknown");
+                break;
+                }
+            };
+        };
 };
     if(type2 === "NO SECOND TYPE"){
         return(
@@ -169,6 +169,7 @@ function typeColors(type) {
         return(
             <span className="attributes" id="types">
                 <span id="type1">{type1}</span>
+                <span> </span>
                 <span id="type2">{type2}</span> 
             </span>
         )
@@ -184,10 +185,9 @@ function SearchBar({search}){
             }; 
         }); 
     };
-    //fixed element having null value by calling the event listener with onChange.
     return(
         <div id="search-container">
-            <input id="search-input" placeholder="insert PKMN name or ID" onChange={()=>{keyListener()}} required></input>
+            <input id="search-input" placeholder="insert PKMN name or ID" onInput={()=>{keyListener()}} required></input>
             <button id="search-button" onClick={search}>Search</button>
         </div>
     )
