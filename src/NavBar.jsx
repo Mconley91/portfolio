@@ -15,6 +15,8 @@ export default function NavBar({setPage}){
           <button className="navBtn" onClick={()=>{setPage(6)}}>D20</button>
           <hr/>
           <button className="navBtn" onClick={()=>{setPage(7)}}>Random Name Generator</button>
+          <hr/>
+          <button className="navBtn" onClick={()=>{setPage(8)}}>Calculator</button>
         </div>
     )
 };

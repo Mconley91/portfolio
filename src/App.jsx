@@ -8,6 +8,7 @@ import Pokedex from './Pokedex'
 import D20 from './D20.jsx'
 import RandomNameGenerator from './RandomNameGenerator.jsx'
 import HomePage from './HomePage.jsx'
+import Calculator from './Calculator.jsx'
 
 export default function App() {
   const [page, setPage] = useState(1); //tried using let var instead, does not trigger UI re-render
@@ -65,6 +66,14 @@ export default function App() {
       <div id="page">
         <p>You Are On Page: {page}</p>
         <RandomNameGenerator/>
+        <NavBar setPage={setPage}/>
+      </div>)
+  }
+  else if(page === 8){
+    return(
+      <div id="page">
+        <p>You Are On Page: {page}</p>
+        <Calculator/>
         <NavBar setPage={setPage}/>
       </div>)
   };
